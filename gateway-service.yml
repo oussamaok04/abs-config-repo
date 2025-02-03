@@ -4,9 +4,49 @@ spring:
       enabled: true
 
     gateway:
-      discovery:
-        locator:
-          lower-case-service-id: true
+      # discovery:
+      #   locator:
+      #     lower-case-service-id: true
+      routes:
+        - id: sessions
+          uri: lb://SESSION-SERVICE
+          predicates:
+            - Path=/sessions/**
+
+        - id: subject
+          uri: lb://SESSION-SERVICE
+          predicates:
+            - Path=/subjects/**
+
+        - id: professor
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/professors/**
+        
+        - id: student
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/students/**
+          
+        - id: surveillant
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/surveillants/**
+        
+        - id: group
+          uri: lb://CLASS-SERVICE
+          predicates:
+            - Path=/groups/**
+
+        - id: filiere
+          uri: lb://CLASS-SERVICE
+          predicates:
+            - Path=/filieres/**
+
+        - id: attendance
+          uri: lb://ATTENDANCE-SERVICE
+          predicates:
+            - Path=/attendances/**
 
 server:
   port: 8080
