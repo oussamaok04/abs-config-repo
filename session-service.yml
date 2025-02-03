@@ -6,5 +6,9 @@ spring:
       enabled: true
       path: /h2-console
 
+eureka:
+  instance:
+    prefer-ip-address: true
+
 server:
   port: 8083
