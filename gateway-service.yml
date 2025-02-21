@@ -7,6 +7,16 @@ spring:
       # discovery:
       #   locator:
       #     lower-case-service-id: true
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
       routes:
         - id: sessions
           uri: lb://SESSION-SERVICE
